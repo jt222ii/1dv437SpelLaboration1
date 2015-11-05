@@ -107,9 +107,8 @@ namespace Laboration1MV_transformationer
                 }
                 a++;
             }
-            //spriteBatch.Draw(testSquare, camera.rotateView(0, 0), Color.White);
             //spriteBatch.Draw(testSquare, camera.getVisualCoords(0, 0), Color.White);
-
+            //spriteBatch.Draw(testSquare, camera.rotateView(0, 0), Color.White);
             spriteBatch.End();
 
             base.Draw(gameTime);
