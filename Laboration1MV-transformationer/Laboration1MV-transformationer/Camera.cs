@@ -20,8 +20,8 @@ namespace Laboration1MV_transformationer
         }
         public Vector2 rotateView(int xCoord, int yCoord)
         {
-            visualX = sizeOfTile*8 - (xCoord * sizeOfTile);
-            visualY = sizeOfTile*8 - (yCoord * sizeOfTile);
+            visualX = (sizeOfTile * 8 + borderSize - sizeOfTile) - (xCoord * sizeOfTile);
+            visualY = (sizeOfTile * 8 + borderSize - sizeOfTile) - (yCoord * sizeOfTile);
             return new Vector2(visualX, visualY);
         }
     }
