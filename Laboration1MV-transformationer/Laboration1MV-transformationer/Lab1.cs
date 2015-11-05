@@ -17,8 +17,8 @@ namespace Laboration1MV_transformationer
         public Lab1()
         {
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferWidth = 512;  // set this value to the desired width of your window
-            graphics.PreferredBackBufferHeight = 512;   // set this value to the desired height of your window
+            graphics.PreferredBackBufferWidth = 632;  // set this value to the desired width of your window
+            graphics.PreferredBackBufferHeight = 632;   // set this value to the desired height of your window
             graphics.ApplyChanges();
             Content.RootDirectory = "Content";
         }
@@ -77,7 +77,12 @@ namespace Laboration1MV_transformationer
         {
             int sizeOfTile = 64;
             //int borderSize = 64;
-            return new Vector2(xCoord * sizeOfTile, yCoord * sizeOfTile);
+            //return new Vector2(xCoord * sizeOfTile, yCoord * sizeOfTile);
+
+            int borderSize = 64;
+            int visualX = borderSize + xCoord * sizeOfTile;
+            int visualY = borderSize + yCoord * sizeOfTile;
+            return new Vector2(visualX, visualY);
         }
         /// <summary>
         /// This is called when the game should draw itself.
