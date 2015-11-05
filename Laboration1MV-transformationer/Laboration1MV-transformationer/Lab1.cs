@@ -11,10 +11,15 @@ namespace Laboration1MV_transformationer
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Texture2D whiteSquare;
+        Texture2D blackSquare;
 
         public Lab1()
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferWidth = 512;  // set this value to the desired width of your window
+            graphics.PreferredBackBufferHeight = 512;   // set this value to the desired height of your window
+            graphics.ApplyChanges();
             Content.RootDirectory = "Content";
         }
 
@@ -39,7 +44,8 @@ namespace Laboration1MV_transformationer
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            blackSquare = Content.Load<Texture2D>("Blacksquare.png");
+            whiteSquare = Content.Load<Texture2D>("Whitesquare.png");
             // TODO: use this.Content to load your game content here
         }
 
@@ -67,6 +73,12 @@ namespace Laboration1MV_transformationer
             base.Update(gameTime);
         }
 
+        public Vector2 returnCoords(int xCoord, int yCoord)
+        {
+            int sizeOfTile = 64;
+            //int borderSize = 64;
+            return new Vector2(xCoord * sizeOfTile, yCoord * sizeOfTile);
+        }
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
@@ -75,7 +87,29 @@ namespace Laboration1MV_transformationer
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            spriteBatch.Begin();
+
+
+            int a = 0;
+            for (int x = 0; x < 8; x+=1)
+            {
+                for (int y = 0; y < 8; y+=1)
+                {
+                    if (a % 2 == 0)
+                    {
+                        spriteBatch.Draw(whiteSquare, returnCoords(x, y), Color.White);
+                    }
+                    else
+                    {
+                        spriteBatch.Draw(blackSquare, returnCoords(x, y), Color.White);
+                    }
+                    a++;
+                }
+                a++;
+            }
+
+
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
