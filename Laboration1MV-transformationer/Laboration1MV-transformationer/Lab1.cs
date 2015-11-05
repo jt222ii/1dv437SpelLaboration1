@@ -13,6 +13,8 @@ namespace Laboration1MV_transformationer
         SpriteBatch spriteBatch;
         Texture2D whiteSquare;
         Texture2D blackSquare;
+        Texture2D testSquare;
+        Camera camera = new Camera();
 
         public Lab1()
         {
@@ -46,6 +48,7 @@ namespace Laboration1MV_transformationer
             spriteBatch = new SpriteBatch(GraphicsDevice);
             blackSquare = Content.Load<Texture2D>("Blacksquare.png");
             whiteSquare = Content.Load<Texture2D>("Whitesquare.png");
+            testSquare = Content.Load<Texture2D>("tile00.png");
             // TODO: use this.Content to load your game content here
         }
 
@@ -73,17 +76,7 @@ namespace Laboration1MV_transformationer
             base.Update(gameTime);
         }
 
-        public Vector2 returnCoords(int xCoord, int yCoord)
-        {
-            int sizeOfTile = 64;
-            //int borderSize = 64;
-            //return new Vector2(xCoord * sizeOfTile, yCoord * sizeOfTile);
 
-            int borderSize = 64;
-            int visualX = borderSize + xCoord * sizeOfTile;
-            int visualY = borderSize + yCoord * sizeOfTile;
-            return new Vector2(visualX, visualY);
-        }
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
@@ -94,7 +87,7 @@ namespace Laboration1MV_transformationer
 
             spriteBatch.Begin();
 
-
+            
             int a = 0;
             for (int x = 0; x < 8; x+=1)
             {
@@ -102,17 +95,20 @@ namespace Laboration1MV_transformationer
                 {
                     if (a % 2 == 0)
                     {
-                        spriteBatch.Draw(whiteSquare, returnCoords(x, y), Color.White);
+                        spriteBatch.Draw(whiteSquare, camera.getVisualCoords(x, y), Color.White);
+                        //spriteBatch.Draw(whiteSquare, camera.rotateView(x, y), Color.White);
                     }
                     else
                     {
-                        spriteBatch.Draw(blackSquare, returnCoords(x, y), Color.White);
+                        spriteBatch.Draw(blackSquare, camera.getVisualCoords(x, y), Color.White);
+                        //spriteBatch.Draw(blackSquare, camera.rotateView(x, y), Color.White);
                     }
                     a++;
                 }
                 a++;
             }
-
+            //spriteBatch.Draw(testSquare, camera.rotateView(0, 0), Color.White);
+            //spriteBatch.Draw(testSquare, camera.getVisualCoords(0, 0), Color.White);
 
             spriteBatch.End();
 
