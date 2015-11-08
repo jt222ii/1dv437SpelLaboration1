@@ -11,6 +11,7 @@ namespace Laboration1MV_transformationer
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        //float scaleForGame;
         Texture2D whiteSquare;
         Texture2D blackSquare;
         Texture2D testSquare;
@@ -19,6 +20,7 @@ namespace Laboration1MV_transformationer
         public Lab1()
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.ApplyChanges();
             graphics.PreferredBackBufferWidth = 632;  // set this value to the desired width of your window
             graphics.PreferredBackBufferHeight = 632;   // set this value to the desired height of your window
             graphics.ApplyChanges();
@@ -44,12 +46,13 @@ namespace Laboration1MV_transformationer
         /// </summary>
         protected override void LoadContent()
         {
+            createTileVisuals();
+            //scaleForGame = camera.scaleToFit(graphics);
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            blackSquare = Content.Load<Texture2D>("Blacksquare.png");
-            whiteSquare = Content.Load<Texture2D>("Whitesquare.png");
+            //blackSquare = Content.Load<Texture2D>("Blacksquare.png");
+            //whiteSquare = Content.Load<Texture2D>("Whitesquare.png");
             testSquare = Content.Load<Texture2D>("tile00.png");
-            // TODO: use this.Content to load your game content here
         }
 
         /// <summary>
@@ -86,8 +89,6 @@ namespace Laboration1MV_transformationer
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
-
-            
             int a = 0;
             for (int x = 0; x < 8; x+=1)
             {
@@ -96,12 +97,14 @@ namespace Laboration1MV_transformationer
                     if (a % 2 == 0)
                     {
                         spriteBatch.Draw(whiteSquare, camera.getVisualCoords(x, y), Color.White);
-                        //spriteBatch.Draw(whiteSquare, camera.rotateView(x, y), Color.White);
+                        //spriteBatch.Draw(whiteSquare, camera.rotateView(x, y), Color.White);       
+                        //spriteBatch.Draw(whiteSquare, camera.getVisualCoords(x, y), null, Color.White, 0, new Vector2(0,0), scaleForGame, SpriteEffects.None, 0);
                     }
                     else
                     {
                         spriteBatch.Draw(blackSquare, camera.getVisualCoords(x, y), Color.White);
                         //spriteBatch.Draw(blackSquare, camera.rotateView(x, y), Color.White);
+                        //spriteBatch.Draw(blackSquare, camera.getVisualCoords(x, y), null, Color.White, 0, new Vector2(0, 0), scaleForGame, SpriteEffects.None, 0);
                     }
                     a++;
                 }
@@ -112,6 +115,18 @@ namespace Laboration1MV_transformationer
             spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+        public void createTileVisuals()
+        {
+            int size = camera.sizeOfTile;
+            this.whiteSquare = new Texture2D(graphics.GraphicsDevice, size, size);
+            Color[] data = new Color[size * size];
+            for (int i = 0; i < data.Length; ++i) data[i] = Color.White;
+            this.whiteSquare.SetData(data);
+
+            this.blackSquare = new Texture2D(graphics.GraphicsDevice, size, size);
+            for (int i = 0; i < data.Length; ++i) data[i] = Color.Black;
+            this.blackSquare.SetData(data);
         }
     }
 }

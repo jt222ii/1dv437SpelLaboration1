@@ -8,10 +8,11 @@ namespace Laboration1MV_transformationer
 {
     class Camera
     {
-        private int sizeOfTile = 64;
+        public int sizeOfTile = 64;
         private int borderSize = 64;
         private int visualX;
         private int visualY;
+        
         public Vector2 getVisualCoords(int xCoord, int yCoord)
         {
             visualX = borderSize + xCoord * sizeOfTile;
@@ -24,5 +25,12 @@ namespace Laboration1MV_transformationer
             visualY = (sizeOfTile * 8 + borderSize - sizeOfTile) - (yCoord * sizeOfTile);
             return new Vector2(visualX, visualY);
         }
+
+        ////https://msdn.microsoft.com/en-us/library/bb447674.aspx
+        //public float scaleToFit(GraphicsDeviceManager graphics)
+        //{
+        //    scale = (float)graphics.GraphicsDevice.Viewport.Width / 1600f;
+        //    return scale;
+        //}
     }
 }
