@@ -12,6 +12,7 @@ namespace Laboration1MV_transformationer
         private int borderSize = 64;
         private int visualX;
         private int visualY;
+        private float scale;
         
         public Vector2 getVisualCoords(int xCoord, int yCoord)
         {
@@ -26,11 +27,21 @@ namespace Laboration1MV_transformationer
             return new Vector2(visualX, visualY);
         }
 
-        ////https://msdn.microsoft.com/en-us/library/bb447674.aspx
-        //public float scaleToFit(GraphicsDeviceManager graphics)
-        //{
-        //    scale = (float)graphics.GraphicsDevice.Viewport.Width / 1600f;
-        //    return scale;
-        //}
+        //med hjälp av https://msdn.microsoft.com/en-us/library/bb447674.aspx
+        public void scaleTileAndBorderToFit(GraphicsDeviceManager graphics) //rescales border and sizeoftile depending on the screen size
+        {
+            float scaleX = (float)graphics.GraphicsDevice.Viewport.Width / (sizeOfTile * 8 + borderSize * 2);
+            float scaleY = (float)graphics.GraphicsDevice.Viewport.Height / (sizeOfTile * 8 + borderSize * 2);
+            if(scaleX < scaleY)
+            {
+                scale = scaleX;
+            }
+            else
+            {
+                scale = scaleY;
+            }
+            sizeOfTile = Convert.ToInt32(Math.Round(sizeOfTile * scale));
+            borderSize = Convert.ToInt32(Math.Round(borderSize * scale));
+        }
     }
 }
