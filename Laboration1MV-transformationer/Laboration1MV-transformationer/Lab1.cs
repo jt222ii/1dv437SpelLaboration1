@@ -16,8 +16,6 @@ namespace Laboration1MV_transformationer
         Texture2D testSquare;
         Camera camera = new Camera();
 
-        float testScale;
-
         public Lab1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -47,7 +45,7 @@ namespace Laboration1MV_transformationer
         protected override void LoadContent()
         {
            
-            createTileVisuals();
+            createTilesVisuals();
             camera.scaleTileAndBorderToFit(graphics);//scales the size of the tiles and borders depending on the window size
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -112,7 +110,7 @@ namespace Laboration1MV_transformationer
 
             base.Draw(gameTime);
         }
-        public void createTileVisuals()
+        public void createTilesVisuals()
         {
             int size = camera.sizeOfTile;
             Color[] data = new Color[size * size];
