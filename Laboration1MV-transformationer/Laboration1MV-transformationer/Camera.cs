@@ -12,7 +12,7 @@ namespace Laboration1MV_transformationer
         private int borderSize = 64;
         private int visualX;
         private int visualY;
-        private float scale;
+        public float scale;
         
         public Vector2 getVisualCoords(int xCoord, int yCoord)
         {
