@@ -38,9 +38,11 @@ namespace Ball.View
             spriteBatch.Draw(background, rect, Color.White);
 
            
-            Texture2D ball = Content.Load<Texture2D>("BallImage.png");
-            spriteBatch.Draw(ball, rect, Color.White);
-
+            Texture2D ball = Content.Load<Texture2D>("ball_green.png");
+            
+            //spriteBatch.Draw(ball, rect, Color.White);
+            float scale = camera.ballScale(ball.Width);
+            spriteBatch.Draw(ball, Vector2.Zero, null, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, 0);
             spriteBatch.End();
 
         }

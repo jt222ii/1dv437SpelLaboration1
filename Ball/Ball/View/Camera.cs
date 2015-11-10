@@ -49,7 +49,7 @@ namespace Ball.View
         }
         public float ballScale(int width)
         {
-            width sizeOfField 
+            return (float)ballDiameter / (float)width;
         }
     }
 }
