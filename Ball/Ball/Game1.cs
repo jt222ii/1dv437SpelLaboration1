@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Ball.View;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -11,10 +12,12 @@ namespace Ball
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        BallView ballView;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+            ballView = new BallView(graphics);
             Content.RootDirectory = "Content";
         }
 
@@ -39,8 +42,9 @@ namespace Ball
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
             // TODO: use this.Content to load your game content here
+            //Content.Load<Texture2D>("BallImage.png");
+
         }
 
         /// <summary>
@@ -76,7 +80,7 @@ namespace Ball
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-
+            ballView.Draw(spriteBatch, Content);
             base.Draw(gameTime);
         }
     }
