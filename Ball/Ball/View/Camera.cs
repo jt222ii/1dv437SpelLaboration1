@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Ball.View
     class Camera
     {
         private int _sizeOfField;
-        private int _borderSize;
+        private int _borderSize = 64;
         private int _ballDiameter;
         GraphicsDeviceManager graphics;
         public Camera(GraphicsDeviceManager Graphics)
@@ -31,6 +32,14 @@ namespace Ball.View
             borderSize = Convert.ToInt32(Math.Round(sizeOfField * 0.05f));
             sizeOfField -= borderSize*2;
             ballDiameter = Convert.ToInt32(Math.Round(sizeOfField * 0.1f));
+        }
+
+        public Vector2 convertToVisualCoords(double x, double y)
+        {
+            int visualX = Convert.ToInt32(Math.Round(x * sizeOfField + borderSize));
+            int visualY = Convert.ToInt32(Math.Round(y * sizeOfField + borderSize));
+            return new Vector2(visualX, visualY);
+
         }
         public int borderSize
         {

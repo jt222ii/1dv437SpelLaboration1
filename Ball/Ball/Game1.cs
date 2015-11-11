@@ -18,6 +18,9 @@ namespace Ball
         {
             graphics = new GraphicsDeviceManager(this);
             ballView = new BallView(graphics);
+            graphics.PreferredBackBufferWidth = 632;  // set this value to the desired width of your window
+            graphics.PreferredBackBufferHeight = 632;
+            graphics.ApplyChanges();
             Content.RootDirectory = "Content";
         }
 

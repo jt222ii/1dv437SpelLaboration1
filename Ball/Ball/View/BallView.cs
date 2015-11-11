@@ -39,12 +39,12 @@ namespace Ball.View
 
            
             Texture2D ball = Content.Load<Texture2D>("ball_green.png");
-            
-            //spriteBatch.Draw(ball, rect, Color.White);
+            var ballCenter = new Vector2(ball.Width / 2, ball.Height / 2);
+            var ballLocation = camera.convertToVisualCoords(0.5, 0.5);
             float scale = camera.ballScale(ball.Width);
-            spriteBatch.Draw(ball, Vector2.Zero, null, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, 0);
+            spriteBatch.Draw(ball, ballLocation, null, Color.White, 0, ballCenter, scale, SpriteEffects.None, 0);
             spriteBatch.End();
-
+            
         }
     }
 }

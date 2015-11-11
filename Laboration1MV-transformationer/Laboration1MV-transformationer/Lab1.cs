@@ -19,8 +19,8 @@ namespace Laboration1MV_transformationer
         public Lab1()
         {
             graphics = new GraphicsDeviceManager(this);
-            //graphics.PreferredBackBufferWidth = 632;  // set this value to the desired width of your window
-            //graphics.PreferredBackBufferHeight = 632;   // set this value to the desired height of your window
+            graphics.PreferredBackBufferWidth = 200;  // set this value to the desired width of your window
+            graphics.PreferredBackBufferHeight = 200;   // set this value to the desired height of your window
             graphics.ApplyChanges();
             Content.RootDirectory = "Content";
         }
