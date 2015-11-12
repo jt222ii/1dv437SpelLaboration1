@@ -9,7 +9,7 @@ namespace Ball.Model
     class Ball
     {
         float _radius = 0.05f;
-        Vector2 _speed = new Vector2(2f, 3.5f);
+        Vector2 _speed = new Vector2(0.3f, 0.7f);
         Vector2 _position;
         public Ball()
         {

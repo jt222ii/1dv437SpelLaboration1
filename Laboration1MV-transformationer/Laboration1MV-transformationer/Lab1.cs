@@ -94,17 +94,20 @@ namespace Laboration1MV_transformationer
                     if (a % 2 == 0)
                     {
                         spriteBatch.Draw(whiteSquare, camera.getVisualCoords(x, y), null, Color.White, 0, new Vector2(0, 0), camera.scale, SpriteEffects.None, 0);
+                        //spriteBatch.Draw(whiteSquare, camera.rotateView(x, y), null, Color.White, 0, new Vector2(0, 0), camera.scale, SpriteEffects.None, 0);
                     }
                     else
                     {
                         spriteBatch.Draw(blackSquare, camera.getVisualCoords(x, y), null, Color.White, 0, new Vector2(0, 0), camera.scale, SpriteEffects.None, 0);
+                        //spriteBatch.Draw(whiteSquare, camera.rotateView(x, y), null, Color.White, 0, new Vector2(0, 0), camera.scale, SpriteEffects.None, 0);
                     }
                     a++;
                 }
                 a++;
             }
             //test
-            spriteBatch.Draw(testSquare, camera.getVisualCoords(1, 3), null, Color.White, 0, new Vector2(0, 0), camera.scale, SpriteEffects.None, 0);
+            //spriteBatch.Draw(testSquare, camera.getVisualCoords(1, 3), null, Color.White, 0, new Vector2(0, 0), camera.scale, SpriteEffects.None, 0);
+            //spriteBatch.Draw(testSquare, camera.rotateView(1, 3), null, Color.White, 0, new Vector2(0, 0), camera.scale, SpriteEffects.None, 0);
             //slut på test
             spriteBatch.End();
 
