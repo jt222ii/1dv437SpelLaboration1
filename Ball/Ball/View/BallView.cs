@@ -11,7 +11,6 @@ namespace Ball.View
 {
     class BallView
     {
-        private SpriteBatch spriteBatch;
         private Camera camera;
         private BallSimulation ballSimulation;
         private GraphicsDeviceManager _graphics;
@@ -36,7 +35,7 @@ namespace Ball.View
             int borderSize = camera.borderSize;
             Rectangle rect = new Rectangle(borderSize, borderSize, sizeOfField, sizeOfField);
             Texture2D background = new Texture2D(_graphics.GraphicsDevice, 1, 1);
-            background.SetData(new Color[] { Color.Pink });
+            background.SetData(new Color[] { Color.Tomato });
             spriteBatch.Draw(background, rect, Color.White);
 
            

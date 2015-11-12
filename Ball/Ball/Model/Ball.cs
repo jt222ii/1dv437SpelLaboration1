@@ -9,7 +9,7 @@ namespace Ball.Model
     class Ball
     {
         float _radius = 0.05f;
-        Vector2 _speed = new Vector2(0.1f, 0.1f);
+        Vector2 _speed = new Vector2(2f, 3.5f);
         Vector2 _position;
         public Ball()
         {
@@ -40,6 +40,15 @@ namespace Ball.Model
         {
             _position.X = newPosX;
             _position.Y = newPosY;
+        }
+
+        public void setNewSpeedX()
+        {
+            _speed.X = -speed.X;
+        }
+        public void setNewSpeedY()
+        {
+            _speed.Y = -speed.Y;
         }
     }
 }

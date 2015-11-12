@@ -24,12 +24,20 @@ namespace Ball.Model
 
         public void moveBall(float deltaTime)
         {
+            ballCollision();
             ball.setNewPos(ball.position.X + ball.speed.X * deltaTime, ball.position.Y + ball.speed.Y * deltaTime);
         }
 
         public void ballCollision()
         {
-
+            if (ball.position.X <= 0 + ball.radius || ball.position.X >= 1 - ball.radius)
+            {
+                ball.setNewSpeedX();
+            }
+            if (ball.position.Y <= 0 + ball.radius || ball.position.Y >= 1 - ball.radius)
+            {
+                ball.setNewSpeedY();
+            }
         }
     }
 }

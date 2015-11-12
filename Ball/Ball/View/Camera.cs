@@ -37,7 +37,6 @@ namespace Ball.View
             int visualX = Convert.ToInt32(Math.Round(x * sizeOfField + borderSize));
             int visualY = Convert.ToInt32(Math.Round(y * sizeOfField + borderSize));
             return new Vector2(visualX, visualY);
-
         }
         public int borderSize
         {
