@@ -11,7 +11,6 @@ namespace Ball.View
     {
         private int _sizeOfField;
         private int _borderSize = 64;
-        private int _ballDiameter;
         GraphicsDeviceManager graphics;
         public Camera(GraphicsDeviceManager Graphics)
         {
@@ -31,7 +30,6 @@ namespace Ball.View
             }
             borderSize = Convert.ToInt32(Math.Round(sizeOfField * 0.05f));
             sizeOfField -= borderSize*2;
-            ballDiameter = Convert.ToInt32(Math.Round(sizeOfField * 0.1f));
         }
 
         public Vector2 convertToVisualCoords(double x, double y)
@@ -51,14 +49,9 @@ namespace Ball.View
             get { return _sizeOfField; }
             set { _sizeOfField = value; }
         }
-        public int ballDiameter
+        public float ballScale(int width, float ballRadius)
         {
-            get { return _ballDiameter; }
-            set { _ballDiameter = value; }
-        }
-        public float ballScale(int width)
-        {
-            return (float)ballDiameter / (float)width;
+            return sizeOfField * 2 * ballRadius / (float)width;
         }
     }
 }

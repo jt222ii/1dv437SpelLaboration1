@@ -1,4 +1,5 @@
-﻿using Ball.View;
+﻿using Ball.Model;
+using Ball.View;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -13,11 +14,13 @@ namespace Ball
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         BallView ballView;
+        BallSimulation ballSimulation;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            ballView = new BallView(graphics);
+            ballSimulation = new BallSimulation();
+            ballView = new BallView(graphics, ballSimulation);
             graphics.PreferredBackBufferWidth = 932;  // set this value to the desired width of your window
             graphics.PreferredBackBufferHeight = 632;
             graphics.ApplyChanges();
@@ -70,6 +73,7 @@ namespace Ball
                 Exit();
 
             // TODO: Add your update logic here
+            ballSimulation.moveBall((float)gameTime.ElapsedGameTime.TotalSeconds);
 
             base.Update(gameTime);
         }

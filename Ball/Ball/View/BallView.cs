@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using Ball.Model;
 
 namespace Ball.View
 {
@@ -12,11 +13,13 @@ namespace Ball.View
     {
         private SpriteBatch spriteBatch;
         private Camera camera;
+        private BallSimulation ballSimulation;
         private GraphicsDeviceManager _graphics;
-        public BallView(GraphicsDeviceManager graphics)
+        public BallView(GraphicsDeviceManager graphics, BallSimulation BallSimulation)
         {
             _graphics = graphics;
             camera = new Camera(graphics);
+            ballSimulation = BallSimulation;
         }
 
         /// <summary>
@@ -26,7 +29,6 @@ namespace Ball.View
         public void Draw(SpriteBatch spriteBatch, ContentManager Content)
         {
             spriteBatch.Begin();
-
             camera.setSizeOfEverything();
 
             //
@@ -40,9 +42,10 @@ namespace Ball.View
            
             Texture2D ball = Content.Load<Texture2D>("ball_green.png");
             var ballCenter = new Vector2(ball.Width / 2, ball.Height / 2);
-            var ballLocation = camera.convertToVisualCoords(0.5, 0.5);
-            float scale = camera.ballScale(ball.Width);
-            spriteBatch.Draw(ball, ballLocation, null, Color.White, 0, ballCenter, scale, SpriteEffects.None, 0);
+            Vector2 ballLogicalLocation = ballSimulation.getPosition();
+            var ballVisualLocation = camera.convertToVisualCoords(ballLogicalLocation.X, ballLogicalLocation.Y);
+            float scale = camera.ballScale(ball.Width, ballSimulation.getBallRadius());
+            spriteBatch.Draw(ball, ballVisualLocation, null, Color.White, 0, ballCenter, scale, SpriteEffects.None, 0);
             spriteBatch.End();
             
         }
