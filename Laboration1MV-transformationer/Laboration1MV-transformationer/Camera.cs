@@ -14,13 +14,13 @@ namespace Laboration1MV_transformationer
         private int visualY;
         public float scale;
         
-        public Vector2 getVisualCoords(int xCoord, int yCoord)
+        public Vector2 getWhiteVisualCoords(int xCoord, int yCoord)
         {
             visualX = borderSize + xCoord * sizeOfTile;
             visualY = borderSize + yCoord * sizeOfTile;
             return new Vector2(visualX, visualY);
         }
-        public Vector2 rotateView(int xCoord, int yCoord)
+        public Vector2 getBlackVisualCoords(int xCoord, int yCoord)
         {
             visualX = (sizeOfTile * 8 + borderSize - sizeOfTile) - (xCoord * sizeOfTile);
             visualY = (sizeOfTile * 8 + borderSize - sizeOfTile) - (yCoord * sizeOfTile);

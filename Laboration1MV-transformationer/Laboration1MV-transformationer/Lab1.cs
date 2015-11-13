@@ -19,8 +19,8 @@ namespace Laboration1MV_transformationer
         public Lab1()
         {
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferWidth = 200;  // set this value to the desired width of your window
-            graphics.PreferredBackBufferHeight = 200;   // set this value to the desired height of your window
+            graphics.PreferredBackBufferWidth = 320;  // set this value to the desired width of your window
+            graphics.PreferredBackBufferHeight = 240;   // set this value to the desired height of your window
             graphics.ApplyChanges();
             Content.RootDirectory = "Content";
         }
@@ -93,21 +93,21 @@ namespace Laboration1MV_transformationer
                     
                     if (a % 2 == 0)
                     {
-                        spriteBatch.Draw(whiteSquare, camera.getVisualCoords(x, y), null, Color.White, 0, new Vector2(0, 0), camera.scale, SpriteEffects.None, 0);
-                        //spriteBatch.Draw(whiteSquare, camera.rotateView(x, y), null, Color.White, 0, new Vector2(0, 0), camera.scale, SpriteEffects.None, 0);
+                        spriteBatch.Draw(whiteSquare, camera.getWhiteVisualCoords(x, y), null, Color.White, 0, new Vector2(0, 0), camera.scale, SpriteEffects.None, 0);
+                        //spriteBatch.Draw(whiteSquare, camera.getBlackVisualCoords(x, y), null, Color.White, 0, new Vector2(0, 0), camera.scale, SpriteEffects.None, 0);
                     }
                     else
                     {
-                        spriteBatch.Draw(blackSquare, camera.getVisualCoords(x, y), null, Color.White, 0, new Vector2(0, 0), camera.scale, SpriteEffects.None, 0);
-                        //spriteBatch.Draw(whiteSquare, camera.rotateView(x, y), null, Color.White, 0, new Vector2(0, 0), camera.scale, SpriteEffects.None, 0);
+                        spriteBatch.Draw(blackSquare, camera.getWhiteVisualCoords(x, y), null, Color.White, 0, new Vector2(0, 0), camera.scale, SpriteEffects.None, 0);
+                        //spriteBatch.Draw(blackSquare, camera.getBlackVisualCoords(x, y), null, Color.White, 0, new Vector2(0, 0), camera.scale, SpriteEffects.None, 0);
                     }
                     a++;
                 }
                 a++;
             }
             //test
-            //spriteBatch.Draw(testSquare, camera.getVisualCoords(1, 3), null, Color.White, 0, new Vector2(0, 0), camera.scale, SpriteEffects.None, 0);
-            //spriteBatch.Draw(testSquare, camera.rotateView(1, 3), null, Color.White, 0, new Vector2(0, 0), camera.scale, SpriteEffects.None, 0);
+            //spriteBatch.Draw(testSquare, camera.getWhiteVisualCoords(1, 3), null, Color.White, 0, new Vector2(0, 0), camera.scale, SpriteEffects.None, 0);
+            //spriteBatch.Draw(testSquare, camera.getBlackVisualCoords(1, 3), null, Color.White, 0, new Vector2(0, 0), camera.scale, SpriteEffects.None, 0);
             //slut på test
             spriteBatch.End();
 
