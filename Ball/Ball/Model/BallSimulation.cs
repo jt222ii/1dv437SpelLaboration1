@@ -9,10 +9,6 @@ namespace Ball.Model
     class BallSimulation
     {
         Ball ball = new Ball();
-        public BallSimulation()
-        {
-
-        }
         public float getBallRadius()
         {
             return ball.radius;
@@ -22,10 +18,10 @@ namespace Ball.Model
             return ball.position;
         }
 
-        public void moveBall(float deltaTime)
+        public void moveBall(float totalSecs)
         {
             ballCollision();
-            ball.setNewPos(ball.position.X + ball.speed.X * deltaTime, ball.position.Y + ball.speed.Y * deltaTime);
+            ball.setNewPos(ball.position.X + ball.speed.X * totalSecs, ball.position.Y + ball.speed.Y * totalSecs);
         }
 
         public void ballCollision()

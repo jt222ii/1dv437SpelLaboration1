@@ -28,7 +28,7 @@ namespace Ball.View
             {
                 sizeOfField = windowSizeY;
             }
-            borderSize = Convert.ToInt32(Math.Round(sizeOfField * 0.05f));
+            //borderSize = Convert.ToInt32(Math.Round(sizeOfField * 0.05f));
             sizeOfField -= borderSize*2;
         }
 
