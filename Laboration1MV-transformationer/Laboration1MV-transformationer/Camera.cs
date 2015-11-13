@@ -16,12 +16,22 @@ namespace Laboration1MV_transformationer
         
         public Vector2 getWhiteVisualCoords(int xCoord, int yCoord)
         {
+            //Logisk koordinat |Visuell koordinat
+            //0,0              | 64, 64
+            //7,0              | 512, 64
+            //1,7              | 128, 512
+            //7,7              | 512, 512
             visualX = (borderSize + xCoord * sizeOfTile) * scale;
             visualY = (borderSize + yCoord * sizeOfTile) * scale;
             return new Vector2(visualX, visualY);
         }
         public Vector2 getBlackVisualCoords(int xCoord, int yCoord)
-        {
+        {   
+            //Logisk koordinat | Visuell koordinat
+            //0,0              | 512,512
+            //6,0              | 128,512
+            //2,7              | 384,64
+            //7,7              | 64,64
             visualX = ((sizeOfTile * 8 + borderSize - sizeOfTile) - (xCoord * sizeOfTile)) * scale;
             visualY = ((sizeOfTile * 8 + borderSize - sizeOfTile) - (yCoord * sizeOfTile)) * scale;
             return new Vector2(visualX, visualY);
