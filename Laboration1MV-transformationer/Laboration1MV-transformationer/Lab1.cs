@@ -46,7 +46,7 @@ namespace Laboration1MV_transformationer
         {
            
             createTilesVisuals();
-            camera.scaleTileAndBorderToFit(graphics);//scales the size of the tiles and borders depending on the window size
+            camera.setScale(graphics);//scales the size of the tiles and borders depending on the window size
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
         }
