@@ -28,7 +28,7 @@ namespace Laboration1MV_transformationer
         }
 
         //med hjälp av https://msdn.microsoft.com/en-us/library/bb447674.aspx
-        public void setScale(GraphicsDeviceManager graphics) //rescales border and sizeoftile depending on the screen size
+        public void setScale(GraphicsDeviceManager graphics) //sets the scale
         {
             float scaleX = (float)graphics.GraphicsDevice.Viewport.Width / (sizeOfTile * 8 + borderSize * 2);
             float scaleY = (float)graphics.GraphicsDevice.Viewport.Height / (sizeOfTile * 8 + borderSize * 2);
