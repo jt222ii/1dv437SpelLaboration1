@@ -11,40 +11,41 @@ namespace Ball.View
 {
     class BallView
     {
-        private Camera camera;
-        private BallSimulation ballSimulation;
-        private GraphicsDeviceManager _graphics;
-        public BallView(GraphicsDeviceManager graphics, BallSimulation BallSimulation)
+        private Camera _camera;
+        private BallSimulation _ballSimulation;
+        private Texture2D _ball;
+        private Rectangle _rect;
+        private Texture2D _background;
+        private Vector2 _ballCenter;
+
+        public BallView(GraphicsDeviceManager graphics, BallSimulation BallSimulation, Texture2D ball)
         {
-            _graphics = graphics;
-            camera = new Camera(graphics);
-            ballSimulation = BallSimulation;
+            _camera = new Camera(graphics);
+            _ballSimulation = BallSimulation;
+            _ball = ball;
+            _ballCenter = new Vector2(_ball.Width / 2, _ball.Height / 2);
+
+            _camera.setSizeOfEverything();
+            _rect = _camera.getRect();
+            _background = new Texture2D(graphics.GraphicsDevice, 1, 1);
+            _background.SetData(new Color[] { Color.Tomato });
+
         }
 
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        public void Draw(SpriteBatch spriteBatch, ContentManager Content)
+        public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
-            camera.setSizeOfEverything();
 
-            //
-            int sizeOfField = camera.sizeOfField;
-            int borderSize = camera.borderSize;
-            Rectangle rect = new Rectangle(borderSize, borderSize, sizeOfField, sizeOfField);
-            Texture2D background = new Texture2D(_graphics.GraphicsDevice, 1, 1);
-            background.SetData(new Color[] { Color.Tomato });
-            spriteBatch.Draw(background, rect, Color.White);
+            spriteBatch.Draw(_background, _rect, Color.White);
+            Vector2 ballLogicalLocation = _ballSimulation.getPosition();
+            var ballVisualLocation = _camera.convertToVisualCoords(ballLogicalLocation.X, ballLogicalLocation.Y);
+            float scale = _camera.ballScale(_ball.Width, _ballSimulation.getBallRadius());
+            spriteBatch.Draw(_ball, ballVisualLocation, null, Color.White, 0, _ballCenter, scale, SpriteEffects.None, 0);
 
-           
-            Texture2D ball = Content.Load<Texture2D>("aqua-ball.png");
-            var ballCenter = new Vector2(ball.Width / 2, ball.Height / 2);
-            Vector2 ballLogicalLocation = ballSimulation.getPosition();
-            var ballVisualLocation = camera.convertToVisualCoords(ballLogicalLocation.X, ballLogicalLocation.Y);
-            float scale = camera.ballScale(ball.Width, ballSimulation.getBallRadius());
-            spriteBatch.Draw(ball, ballVisualLocation, null, Color.White, 0, ballCenter, scale, SpriteEffects.None, 0);
             spriteBatch.End();
             
         }

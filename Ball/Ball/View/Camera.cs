@@ -52,5 +52,10 @@ namespace Ball.View
         {
             return sizeOfField * 2 * ballRadius / (float)width;
         }
+
+        public Rectangle getRect()
+        {
+            return new Rectangle(borderSize, borderSize, sizeOfField, sizeOfField);
+        }
     }
 }

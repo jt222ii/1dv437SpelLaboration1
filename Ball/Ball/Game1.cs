@@ -15,16 +15,17 @@ namespace Ball
         SpriteBatch spriteBatch;
         BallView ballView;
         BallSimulation ballSimulation;
+        Texture2D ballTexture;
 
         public Game1()
         {
-            graphics = new GraphicsDeviceManager(this);
             ballSimulation = new BallSimulation();
-            ballView = new BallView(graphics, ballSimulation);
+
+            Content.RootDirectory = "Content";
+            graphics = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferWidth = 900;  // set this value to the desired width of your window
             graphics.PreferredBackBufferHeight = 900;
             graphics.ApplyChanges();
-            Content.RootDirectory = "Content";
         }
 
         /// <summary>
@@ -36,7 +37,6 @@ namespace Ball
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
             base.Initialize();
         }
 
@@ -48,9 +48,8 @@ namespace Ball
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            // TODO: use this.Content to load your game content here
-            //Content.Load<Texture2D>("BallImage.png");
-
+            ballTexture = Content.Load<Texture2D>("aqua-ball.png");
+            ballView = new BallView(graphics, ballSimulation, ballTexture);
         }
 
         /// <summary>
@@ -87,7 +86,7 @@ namespace Ball
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-            ballView.Draw(spriteBatch, Content);
+            ballView.Draw(spriteBatch);
             base.Draw(gameTime);
         }
     }
