@@ -39,7 +39,7 @@ namespace Ball.View
             spriteBatch.Draw(background, rect, Color.White);
 
            
-            Texture2D ball = Content.Load<Texture2D>("ball_green.png");
+            Texture2D ball = Content.Load<Texture2D>("aqua-ball.png");
             var ballCenter = new Vector2(ball.Width / 2, ball.Height / 2);
             Vector2 ballLogicalLocation = ballSimulation.getPosition();
             var ballVisualLocation = camera.convertToVisualCoords(ballLogicalLocation.X, ballLogicalLocation.Y);
