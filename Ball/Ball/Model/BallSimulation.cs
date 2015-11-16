@@ -18,10 +18,10 @@ namespace Ball.Model
             return ball.position;
         }
 
-        public void moveBall(float totalSecs)
+        public void moveBall(float time)
         {
             ballCollision();
-            ball.setNewPos(ball.position.X + ball.speed.X * totalSecs, ball.position.Y + ball.speed.Y * totalSecs);
+            ball.setNewPos(time);
         }
 
         public void ballCollision()

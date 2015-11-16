@@ -36,10 +36,9 @@ namespace Ball.Model
                 return _position;
             }
         }
-        public void setNewPos(float newPosX, float newPosY)
+        public void setNewPos(float time)
         {
-            _position.X = newPosX;
-            _position.Y = newPosY;
+            _position += _speed * time;
         }
 
         public void setNewSpeedX()
