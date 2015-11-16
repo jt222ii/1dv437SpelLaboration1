@@ -19,8 +19,6 @@ namespace Ball
 
         public Game1()
         {
-            ballSimulation = new BallSimulation();
-
             Content.RootDirectory = "Content";
             graphics = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferWidth = 900;  // set this value to the desired width of your window
@@ -49,6 +47,7 @@ namespace Ball
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             ballTexture = Content.Load<Texture2D>("aqua-ball.png");
+            ballSimulation = new BallSimulation();
             ballView = new BallView(graphics, ballSimulation, ballTexture);
         }
 

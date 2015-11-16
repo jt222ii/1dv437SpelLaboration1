@@ -10,13 +10,13 @@ namespace Ball.View
     class Camera
     {
         private int _sizeOfField;
-        private int _borderSize = 64;
+        private int _borderSize = 32;
         GraphicsDeviceManager graphics;
         public Camera(GraphicsDeviceManager Graphics)
         {
             graphics = Graphics;
         }
-        public void setSizeOfEverything()
+        public void setSizeOfField()
         {
             int windowSizeX = graphics.GraphicsDevice.Viewport.Width;
             int windowSizeY = graphics.GraphicsDevice.Viewport.Height;
@@ -28,7 +28,6 @@ namespace Ball.View
             {
                 sizeOfField = windowSizeY;
             }
-            //borderSize = Convert.ToInt32(Math.Round(sizeOfField * 0.05f));
             sizeOfField -= borderSize*2;
         }
 

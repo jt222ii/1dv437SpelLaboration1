@@ -25,17 +25,12 @@ namespace Ball.View
             _ball = ball;
             _ballCenter = new Vector2(_ball.Width / 2, _ball.Height / 2);
 
-            _camera.setSizeOfEverything();
+            _camera.setSizeOfField();
             _rect = _camera.getRect();
             _background = new Texture2D(graphics.GraphicsDevice, 1, 1);
             _background.SetData(new Color[] { Color.Tomato });
-
         }
 
-        /// <summary>
-        /// This is called when the game should draw itself.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
