@@ -32,10 +32,10 @@ namespace Ball.View
             sizeOfField -= borderSize*2;
         }
 
-        public Vector2 convertToVisualCoords(double x, double y)
+        public Vector2 convertToVisualCoords(float x, float y)
         {
-            int visualX = Convert.ToInt32(Math.Round(x * sizeOfField + borderSize));
-            int visualY = Convert.ToInt32(Math.Round(y * sizeOfField + borderSize));
+            float visualX = x * sizeOfField + borderSize;
+            float visualY = y * sizeOfField + borderSize;
             return new Vector2(visualX, visualY);
         }
         public int borderSize
